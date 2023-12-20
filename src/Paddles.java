@@ -2,7 +2,7 @@ import java.awt.*;
 import java.awt.event.KeyEvent;
 
 public class Paddles extends Rectangle {
-    public int ySpeedFactor = 0, xSpeedFactor = 0;
+    public int ySpeedFactor = 0;
     public char upChar, downChar;
     Color color;
     public static int paddleHeight = 100, paddleWidth = 20;
@@ -12,13 +12,6 @@ public class Paddles extends Rectangle {
         this.color = color;
         this.upChar = upChar;
         this.downChar = downChar;
-    }
-
-    public boolean isCollding(pongBall ball) {
-        if(ball.x > (x - 20) && ball.x < x+paddleWidth){
-            return ball.y > y && ball.y < y + paddleHeight;
-        }
-        return false;
     }
 
 
@@ -38,14 +31,14 @@ public class Paddles extends Rectangle {
         }
 
         if(e.getKeyChar() == downChar){
-            ySpeedFactor = 3;
+            ySpeedFactor = 4;
         }
 
     }
 
     public void inverseYLinearMove()
     {
-        ySpeedFactor = 3;
+        ySpeedFactor = 4;
         ySpeedFactor = ySpeedFactor*-1;
     }
 

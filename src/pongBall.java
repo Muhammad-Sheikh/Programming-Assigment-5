@@ -3,8 +3,10 @@ import java.util.Random;
 
 public class pongBall extends Rectangle {
 
-    public int ySpeedFactor = 3, xSpeedFactor = 3, newSpeed;
+    public int ySpeedFactor = 3, xSpeedFactor = 3;
     public static int ball_size = 20;
+    public static boolean wallTouched;
+
 
     public pongBall(int x, int y) {
         super(x, y, ball_size, ball_size);
@@ -20,18 +22,12 @@ public class pongBall extends Rectangle {
         xSpeedFactor = xSpeedFactor*-1;
     }
 
-    public void randomSkew()
-    {
-        Random random = new Random();
-        x = x + random.nextInt(5);
-        y = y + random.nextInt(5);
-    }
     public void moveBall()
     {
-        y = y + ySpeedFactor + newSpeed;
-        x = x + xSpeedFactor + newSpeed;
+        y = y + ySpeedFactor;
+        x = x + xSpeedFactor;
     }
-    public void paddleCollsionDetetced()
+    public void paddleCollisionDetected                                                                                                                                                                   ()
     {
         inverseXlinearMove();
         inverseYlinearMove();
@@ -39,6 +35,7 @@ public class pongBall extends Rectangle {
 
     public  void cornerDetection(int width, int height)
     {
+        wallTouched = false;
         if(y >= height)
         {
             inverseYlinearMove();
@@ -52,12 +49,14 @@ public class pongBall extends Rectangle {
 
         if(x >= width)
         {
-            inverseXlinearMove();
+            gamePanel.player1Score = gamePanel.player1Score +1;
+            wallTouched = true;
         } else if(x <= 0)
         {
             if(xSpeedFactor < 0)
             {
-                xSpeedFactor = ySpeedFactor *-1;
+                gamePanel.player2Score = gamePanel.player2Score +1;
+                wallTouched = true;
             }
         }
 
