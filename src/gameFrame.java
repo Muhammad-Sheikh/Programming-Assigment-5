@@ -8,7 +8,7 @@ public class gameFrame extends JFrame {
     {
         panel = new gamePanel();
         this.add(panel);
-        this.setTitle("GUI is cool!"); //set title for frame
+        this.setTitle("Java Pong By Muhammed Sheikh"); //set title for frame
         this.setResizable(false); //frame can't change size
         this.setBackground(Color.white);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //X button will stop program execution

@@ -2,7 +2,7 @@ import java.awt.*;
 import java.awt.event.KeyEvent;
 
 public class Paddles extends Rectangle {
-    public int ySpeedFactor = 0;
+    public int ySpeedFactor;
     public char upChar, downChar;
     Color color;
     public static int paddleHeight = 100, paddleWidth = 20;
@@ -31,14 +31,14 @@ public class Paddles extends Rectangle {
         }
 
         if(e.getKeyChar() == downChar){
-            ySpeedFactor = 4;
+            ySpeedFactor = 5;
         }
 
     }
 
     public void inverseYLinearMove()
     {
-        ySpeedFactor = 4;
+        ySpeedFactor = 5;
         ySpeedFactor = ySpeedFactor*-1;
     }
 
